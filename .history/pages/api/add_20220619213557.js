@@ -21,6 +21,7 @@ export default async function addTest(req, res) {
         const test = await Test.create(req.body)
 
         console.log('CREATED DOCUMENT');
+        forceReload();
         res.json({test})
         
   

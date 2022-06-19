@@ -21,8 +21,7 @@ const name = props.test.name;
 const deleteTestFun = async (postID, name) => {
 
 const response = await fetch('/api/delete/' + postID, {
-  method:'DELETE',
-  
+  method:'DELETE'
 })
 const data = await response.json()
 console.log(data)

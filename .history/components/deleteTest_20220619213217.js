@@ -9,34 +9,43 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import { useRouter } from 'next/dist/client/router';
 
 
 export default function DeleteTest(props)
 {
- 
+  const router = useRouter();
+  const forceReload = () => {
+    router.reload();
+  }
 
 const postID = props.test._id;
-const name = props.test.name;
-const deleteTestFun = async (postID, name) => {
 
-const response = await fetch('/api/delete/' + postID, {
-  method:'DELETE',
-  
-})
-const data = await response.json()
-console.log(data)
+const deleteTestFun = async () => {
 
+  console.log(props.test.name)
+
+  const res = await fetch('/api/'+ postID, {
+    method: 'PATCH',
+    header: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(postID)
+  });
+
+  const data = await response.json()
+  console.log(data)
 }
 
 
 
     //{props.test._id}
     return(
-      <div>
         <Button onClick={deleteTestFun}>
       Delete 
       </Button>
-      </div>
+      <Button onClick={forceReload}>
+      Reload
+      </Button>
     );
 }

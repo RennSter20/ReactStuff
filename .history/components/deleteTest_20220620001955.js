@@ -22,7 +22,7 @@ const deleteTestFun = async (postID, name) => {
 
 const response = await fetch('/api/delete/' + postID, {
   method:'DELETE',
-  
+  body: name
 })
 const data = await response.json()
 console.log(data)

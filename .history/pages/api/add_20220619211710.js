@@ -1,6 +1,5 @@
 import connectMongo from "../../utlis/connectMongo";
 import Test from "../../models/testModel";
-
 /**
  * 
  * @param {import("next").NextApiRequest} req 
@@ -21,9 +20,8 @@ export default async function addTest(req, res) {
         const test = await Test.create(req.body)
 
         console.log('CREATED DOCUMENT');
-        res.json({test})
-        
-  
+        res.json({test});
+
     }
     catch(error)
     {

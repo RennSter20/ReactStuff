@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { useState } from 'react';
+import {reload} from "../utlis/reload"
 export default function Form(props) {
 
 const [formData, setFormData] = useState({

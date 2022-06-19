@@ -1,6 +1,6 @@
 import connectMongo from "../../utlis/connectMongo";
 import Test from "../../models/testModel";
-
+import { useRouter } from 'next/dist/client/router';
 /**
  * 
  * @param {import("next").NextApiRequest} req 
@@ -8,7 +8,10 @@ import Test from "../../models/testModel";
  */
 
 export default async function addTest(req, res) {
-
+    const router = useRouter();
+    const forceReload = () => {
+      router.reload();
+    }
     try
     {
         console.log('CONNECTING TO MONGO');
@@ -21,9 +24,10 @@ export default async function addTest(req, res) {
         const test = await Test.create(req.body)
 
         console.log('CREATED DOCUMENT');
+
         res.json({test})
         
-  
+        forceReload();
     }
     catch(error)
     {

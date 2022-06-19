@@ -17,16 +17,15 @@ export default function DeleteTest(props)
  
 
 const postID = props.test._id;
-const name = props.test.name;
-const deleteTestFun = async (postID, name) => {
 
-const response = await fetch('/api/delete/' + postID, {
-  method:'DELETE',
-  
-})
-const data = await response.json()
-console.log(data)
+const deleteTestFun = async () => {
 
+  console.log(props.test.name)
+
+
+
+  const data = await response.json()
+  console.log(data)
 }
 
 
