@@ -7,6 +7,9 @@ const testSchema = new Schema({
         required:true,
         unique:true,
     },
+    done:{
+        type:Number
+    }
 });
 
 const Test = models.Test || model('Test', testSchema)

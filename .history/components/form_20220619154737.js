@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { useState } from 'react';
+import { getServerSideProps } from '../pages';
 
 export default function Form(props) {
 
@@ -21,7 +22,7 @@ const handleChange = (e) =>
 }
 
   const createTest = async (props) => {
-    
+    console.log('trying to access create api');
    const res = await fetch('/api/add', {
       method: 'POST',
       headers: {
