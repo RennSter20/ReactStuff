@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Form from '../components/form';
+import BasicTextFields from '../components/form';
 import DeleteIcon from '@mui/icons-material/Delete';
 import connectMongo from '../utlis/connectMongo'
 import Test from '../models/testModel';
@@ -28,8 +28,8 @@ export default function Album({tests}) {
 
   return (
 <div>
+    <BasicTextFields/>
 
-<Form></Form>
     <div>
       {tests.map(test => (
         <a key={test._id}>
@@ -45,31 +45,3 @@ export default function Album({tests}) {
   );
 }
 
-export const getServerSideProps = async () => {
-  try
-    {
-        console.log('CONNECTING TO MONGO');
-
-        await connectMongo();
-    
-        console.log('CONNECTED TO MONGO');
-        console.log('FETCHING DOCUMENTS');
-
-        const tests = await Test.find();
-
-        console.log('FETCHED DOCUMENTS');
-    
-        return {
-          props:{
-            tests: JSON.parse(JSON.stringify(tests))
-          }
-        }
-    }
-catch(error)
-{
-    console.log(error);
-      return {
-        notFound: true
-      }
-}
-}

@@ -29,7 +29,7 @@ export default function Album({tests}) {
   return (
 <div>
 
-<Form></Form>
+
     <div>
       {tests.map(test => (
         <a key={test._id}>
