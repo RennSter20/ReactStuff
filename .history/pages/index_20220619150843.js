@@ -35,7 +35,7 @@ export default function Album({tests}) {
       {tests.map(test => (
         <a key={test._id}>
           <p>{test.name} {test.email}</p>
-          <DeleteTest test={test}></DeleteTest>
+          <DeleteTest test={test} render={getServerSideProps}></DeleteTest>
         </a>
       ))}
     </div>

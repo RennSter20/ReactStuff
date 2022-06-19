@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { useState } from 'react';
-import { getServerSideProps } from '../pages';
 
 export default function Form(props) {
 
@@ -54,7 +53,7 @@ const handleChange = (e) =>
       onChange={handleChange} value={formData.email}
  />
 
-      <Button onClick={createTest}>Click me!</Button>
+      <Button onClick={createTest, getServerSideProps}>Click me!</Button>
     </Box>
   );
 }

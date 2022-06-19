@@ -54,7 +54,7 @@ const handleChange = (e) =>
       onChange={handleChange} value={formData.email}
  />
 
-      <Button onClick={createTest}>Click me!</Button>
+      <Button onClick={createTest, props.getServerSideProps}>Click me!</Button>
     </Box>
   );
 }

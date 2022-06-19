@@ -16,8 +16,7 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Form from '../components/form';
 import DeleteIcon from '@mui/icons-material/Delete';
-import connectMongo from '../utlis/connectMongo';
-import Test from '../models/testModel';
+
 import Checkbox from '@mui/material/Checkbox';
 import DeleteTest from '../components/deleteTest';
 const theme = createTheme();

@@ -19,13 +19,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function DeleteTest(props)
 {
+const id = props.test._id;
 
-const deleteTest = async _id => {
-  const response = await fetch('/api/'+ _id, {
+const deleteTest = async ID => {
+  const response = await fetch('/api/'+ ID, {
     method: 'DELETE'
   })
-  const data = await response.json()
-  console.log(data)
 }
     
 

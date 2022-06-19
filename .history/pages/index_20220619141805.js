@@ -21,7 +21,7 @@ import Test from '../models/testModel';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteTest from '../components/deleteTest';
 const theme = createTheme();
-
+import List from '../components/list';
 
 
 
@@ -31,14 +31,7 @@ export default function Album({tests}) {
 <div>
 
 <Form></Form>
-    <div>
-      {tests.map(test => (
-        <a key={test._id}>
-          <p>{test.name} {test.email}</p>
-          <DeleteTest test={test}></DeleteTest>
-        </a>
-      ))}
-    </div>
+    <List></List>
         
     
 
@@ -46,31 +39,3 @@ export default function Album({tests}) {
   );
 }
 
-export const getServerSideProps = async () => {
-  try
-    {
-        console.log('CONNECTING TO MONGO');
-
-        await connectMongo();
-    
-        console.log('CONNECTED TO MONGO');
-        console.log('FETCHING DOCUMENTS');
-
-        const tests = await Test.find();
-
-        console.log('FETCHED DOCUMENTS');
-    
-        return {
-          props:{
-            tests: JSON.parse(JSON.stringify(tests))
-          }
-        }
-    }
-catch(error)
-{
-    console.log(error);
-      return {
-        notFound: true
-      }
-}
-}

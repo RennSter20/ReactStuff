@@ -1,13 +1,13 @@
 import connectMongo from "../../utlis/connectMongo";
 import Test from "../../models/testModel";
+import { MongoClient } from "mongodb";
 /**
  * 
  * @param {import("next").NextApiRequest} req 
  * @param {import("next").NextApiResponse} res 
  */
 
-export default async function addTest(req, res) {
-    const router = useRouter()
+export default async function deleteTest(req, res) {
     try
     {
         console.log('CONNECTING TO MONGO');
@@ -15,17 +15,15 @@ export default async function addTest(req, res) {
         await connectMongo();
     
         console.log('CONNECTED TO MONGO');
-        console.log('CREATING DOCUMENT');
+        console.log('DELETING DOCUMENT');
 
-        const test = await Test.create(req.body)
-
-        console.log('CREATED DOCUMENT');
+        console.log('DELETED DOCUMENT');
     
         res.json({test});
     }
     catch(error)
     {
-        console.log(error);
+        console.log('could not delete');
         res.json({error});
     }
     

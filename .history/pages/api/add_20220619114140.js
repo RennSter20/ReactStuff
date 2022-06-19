@@ -7,7 +7,7 @@ import Test from "../../models/testModel";
  */
 
 export default async function addTest(req, res) {
-    const router = useRouter()
+
     try
     {
         console.log('CONNECTING TO MONGO');
