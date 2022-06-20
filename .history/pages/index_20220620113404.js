@@ -20,17 +20,20 @@ import connectMongo from '../utlis/connectMongo';
 import Test from '../models/testModel';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteTest from '../components/deleteTest';
-
+import { useRouter } from 'next/router';
 const theme = createTheme();
 
 
 
 export default function Album({tests}) {
-
-
-
-
-
+  function SomePage(props) {
+    const router = useRouter();
+    // Call this function whenever you want to
+    // refresh props!
+    const refreshData = () => {
+      router.replace(router.asPath);
+    }
+  }
   return (
 <div>
 

@@ -51,7 +51,6 @@ const handleChange = (e) =>
 
     const data = await res.json();
     console.log(data);
-    setFormData("");
     handleClose();
     refreshData();
   }
@@ -59,7 +58,7 @@ const handleChange = (e) =>
   return (
     <div>
 <Button variant="outlined" onClick={handleClickOpen}>
-        Add Item
+        Open alert dialog
       </Button>
       <Dialog
       open={open}

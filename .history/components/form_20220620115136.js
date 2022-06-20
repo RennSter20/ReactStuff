@@ -51,15 +51,13 @@ const handleChange = (e) =>
 
     const data = await res.json();
     console.log(data);
-    setFormData("");
-    handleClose();
     refreshData();
   }
 
   return (
     <div>
 <Button variant="outlined" onClick={handleClickOpen}>
-        Add Item
+        Open alert dialog
       </Button>
       <Dialog
       open={open}
@@ -84,8 +82,7 @@ const handleChange = (e) =>
 
       <Button onClick={createTest}>Click me!</Button>
     </Box>
-    </Dialog>
-    </div>
+    </Dialog></div>
   );
 }
 

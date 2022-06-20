@@ -20,16 +20,11 @@ import connectMongo from '../utlis/connectMongo';
 import Test from '../models/testModel';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteTest from '../components/deleteTest';
-
 const theme = createTheme();
 
 
 
 export default function Album({tests}) {
-
-
-
-
 
   return (
 <div>

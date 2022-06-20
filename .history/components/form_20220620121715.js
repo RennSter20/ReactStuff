@@ -85,6 +85,9 @@ const handleChange = (e) =>
       <Button onClick={createTest}>Click me!</Button>
     </Box>
     </Dialog>
+    <Alert onClose={handleSnackbarSuccClose} severity="success" sx={{ width: '100%' }}>
+          User Successfully reported!
+        </Alert>
     </div>
   );
 }

@@ -20,16 +20,11 @@ import connectMongo from '../utlis/connectMongo';
 import Test from '../models/testModel';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteTest from '../components/deleteTest';
-
 const theme = createTheme();
 
 
 
 export default function Album({tests}) {
-
-
-
-
 
   return (
 <div>
@@ -67,6 +62,10 @@ export const getServerSideProps = async () => {
         return {
           props:{
             tests: JSON.parse(JSON.stringify(tests))
+          },
+          redirect:{
+            destination:'/',
+            permanent: false,
           }
         }
     }

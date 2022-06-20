@@ -9,7 +9,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import connectMongo from '../utlis/connectMongo';
+import Test from '../models/testModel';
 
 
 export default function DeleteTest(props)
@@ -18,24 +19,14 @@ export default function DeleteTest(props)
 
 const postID = props.test._id;
 const name = props.test.name;
-const deleteTestFun = async (postID) => {
 
-const response = await fetch('/api/delete/' + postID, {
-  method:'DELETE',
-  body: props.test
-})
-
-const data = await response.json()
-console.log(data)
-
-}
-
+const del = () =>  {Test.findOneAndRemove({_id:props.test._id});}
 
 
     //{props.test._id}
     return(
       <div>
-        <Button onClick={deleteTestFun}>
+        <Button onClick={}>
       Delete 
       </Button>
       </div>

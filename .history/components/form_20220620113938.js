@@ -9,25 +9,25 @@ import Dialog from '@mui/material/Dialog';
 
 
 
-export default function FormContext(props) {
-  const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+export default function Form(props) {
 
-  const handleClose = () => {
-    setOpen(false);
-  };
   //reload page
   const router = useRouter();
   const refreshData = () => {
     router.replace(router.asPath);
   }
 //
+const { onClose, selectedValue, open } = props;
+
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
+
 const [formData, setFormData] = useState({
   name:"",
   email:""
 })
+
 const handleChange = (e) =>
 {
   const {name, value} = e.target;
@@ -51,22 +51,15 @@ const handleChange = (e) =>
 
     const data = await res.json();
     console.log(data);
-    setFormData("");
-    handleClose();
+
     refreshData();
   }
 
+
+
+
   return (
-    <div>
-<Button variant="outlined" onClick={handleClickOpen}>
-        Add Item
-      </Button>
-      <Dialog
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-    >
+    <Dialog onClose={handleClose} open={open}>
     <Box
       component="form"
       sx={{
@@ -84,8 +77,6 @@ const handleChange = (e) =>
 
       <Button onClick={createTest}>Click me!</Button>
     </Box>
-    </Dialog>
-    </div>
+</Dialog>
   );
 }
-

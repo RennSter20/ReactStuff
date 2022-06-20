@@ -25,9 +25,13 @@ const theme = createTheme();
 
 
 
-export default function Album({tests}) {
+export default function Album({tests}, props) {
 
+  const { onClose, selectedValue, open } = props;
 
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
 
 
 

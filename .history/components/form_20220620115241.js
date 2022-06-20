@@ -51,7 +51,6 @@ const handleChange = (e) =>
 
     const data = await res.json();
     console.log(data);
-    setFormData("");
     handleClose();
     refreshData();
   }

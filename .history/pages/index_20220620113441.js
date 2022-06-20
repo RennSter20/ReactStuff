@@ -20,7 +20,7 @@ import connectMongo from '../utlis/connectMongo';
 import Test from '../models/testModel';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteTest from '../components/deleteTest';
-
+import { useRouter } from 'next/router';
 const theme = createTheme();
 
 
@@ -28,7 +28,11 @@ const theme = createTheme();
 export default function Album({tests}) {
 
 
+    const router = useRouter();
 
+    const refreshData = () => {
+      router.replace(router.asPath);
+    }
 
 
   return (

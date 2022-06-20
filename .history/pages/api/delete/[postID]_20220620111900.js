@@ -1,6 +1,6 @@
 import connectMongo from '../../../utlis/connectMongo';
-import Test from '../../../models/testModel';
-import { MongoClient } from 'mongodb';
+import Test from "../../../models/testModel";
+import { MongoClient } from "mongodb";
 import mongoose from 'mongoose';
 /**
  * 
@@ -10,8 +10,8 @@ import mongoose from 'mongoose';
 
 export default async function deleteTest(req, res) {
     try{
-      console.log(req.body.name);
-      const test = await Test.remove(req.body)
+      console.log('deleting');
+      await Test.findByIdAndDelete(req.params.postID);
       
     res.send('Item deleted');
     }catch(error)

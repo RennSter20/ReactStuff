@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
-
+import Alert from '@mui/material';
 
 
 export default function FormContext(props) {
@@ -85,6 +85,9 @@ const handleChange = (e) =>
       <Button onClick={createTest}>Click me!</Button>
     </Box>
     </Dialog>
+    <Alert onClose={handleSnackbarSuccClose} severity="success" sx={{ width: '100%' }}>
+          User Successfully reported!
+        </Alert>
     </div>
   );
 }

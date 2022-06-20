@@ -10,7 +10,6 @@ import mongoose from 'mongoose';
 
 export default async function deleteTest(req, res) {
     try{
-      console.log(req.body.name);
       const test = await Test.remove(req.body)
       
     res.send('Item deleted');
