@@ -16,28 +16,23 @@ export default function DeleteTest(props)
 {
  
 
-const postID = props.test._id;
 const name = props.test.name;
-const deleteTestFun = async (postID) => {
+const postID = props.test._id;
 
-const response = await fetch('/api/delete/' + postID, {
-  method:'DELETE',
-  body: props.test
-})
-
-const data = await response.json()
-console.log(data)
-
-}
+const deleteTestFun = async () => {
+    const response = await fetch('/api/delete/' + postID, {
+      method: 'DELETE',
+    });
+    const data = await response.json();
+    console.log(data);
+  };
 
 
 
     //{props.test._id}
     return(
       <div>
-        <Button onClick={deleteTestFun}>
-      Delete 
-      </Button>
+        <Button onClick={deleteTestFun}>Delete</Button>
       </div>
     );
 }

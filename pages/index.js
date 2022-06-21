@@ -21,15 +21,10 @@ import Test from '../models/testModel';
 import Checkbox from '@mui/material/Checkbox';
 import DeleteTest from '../components/deleteTest';
 
+
 const theme = createTheme();
 
-
-
 export default function Album({tests}) {
-
-
-
-
 
   return (
 <div>
@@ -44,7 +39,7 @@ export default function Album({tests}) {
       ))}
     </div>
         
-    
+    <Link href="/users/userLogin">Login page</Link>
 
 </div>
   );
@@ -78,3 +73,4 @@ catch(error)
       }
 }
 }
+
