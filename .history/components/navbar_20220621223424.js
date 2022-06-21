@@ -13,46 +13,17 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useUser } from '@auth0/nextjs-auth0';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 
+const pages = ['Welcome', 'Rate'];
 
+const settings = [
+  {
+    'name':'Profile',
+    'link':'/'
+  }
+];
 
 const ResponsiveAppBar = () => {
-  const pages = ['Welcome', 'Rate'];
-  const { user, error, isLoading } = useUser();
-  var settings = [
-    {
-      'name':'Profile',
-      'link':'/'
-    },
-    {
-      'name':'Logout',
-      'link':'/api/auth/logout'
-    }
-  ];
-  
-  if(user)
-  {
-    settings = [
-      {
-        'name':'Profile',
-        'link':'/'
-      },
-      {
-        'name':'Logout',
-        'link':'/api/auth/logout'
-      }
-    ];
-  }else
-  {
-    settings = [
-      {
-        'name':'Login',
-        'link':'/api/auth/login'
-      }
-    ];
-  }
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -70,7 +41,7 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const { user, error, isLoading } = useUser();
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
@@ -129,7 +100,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {user?<Avatar alt="Remy Sharp" src={user.picture} /> : <AccountCircle/>}
+                <Avatar alt="Remy Sharp" src={user.picture} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -150,12 +121,11 @@ const ResponsiveAppBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center"><a href={setting.link}>{setting.name}</a></Typography>
+                  <Typography textAlign="center"></Typography>
                 </MenuItem>
               ))}
             </Menu>
-          </Box> 
-
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

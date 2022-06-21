@@ -15,12 +15,22 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useUser } from '@auth0/nextjs-auth0';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
+const pages = ['Welcome', 'Rate'];
+const { user, error, isLoading } = useUser();
+var settings = [
+  {
+    'name':'Profile',
+    'link':'/'
+  },
+  {
+    'name':'Logout',
+    'link':'/api/auth/logout'
+  }
+];
 
-
-const ResponsiveAppBar = () => {
-  const pages = ['Welcome', 'Rate'];
-  const { user, error, isLoading } = useUser();
-  var settings = [
+if(user)
+{
+  settings = [
     {
       'name':'Profile',
       'link':'/'
@@ -30,29 +40,17 @@ const ResponsiveAppBar = () => {
       'link':'/api/auth/logout'
     }
   ];
-  
-  if(user)
-  {
-    settings = [
-      {
-        'name':'Profile',
-        'link':'/'
-      },
-      {
-        'name':'Logout',
-        'link':'/api/auth/logout'
-      }
-    ];
-  }else
-  {
-    settings = [
-      {
-        'name':'Login',
-        'link':'/api/auth/login'
-      }
-    ];
-  }
+}else
+{
+  settings = [
+    {
+      'name':'Login',
+      'link':'/api/auth/login'
+    }
+  ];
+}
 
+const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 

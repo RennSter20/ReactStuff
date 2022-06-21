@@ -13,46 +13,11 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useUser } from '@auth0/nextjs-auth0';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 
-
+const pages = ['Welcome', 'Rate'];
+const settings = ['Profile', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = () => {
-  const pages = ['Welcome', 'Rate'];
-  const { user, error, isLoading } = useUser();
-  var settings = [
-    {
-      'name':'Profile',
-      'link':'/'
-    },
-    {
-      'name':'Logout',
-      'link':'/api/auth/logout'
-    }
-  ];
-  
-  if(user)
-  {
-    settings = [
-      {
-        'name':'Profile',
-        'link':'/'
-      },
-      {
-        'name':'Logout',
-        'link':'/api/auth/logout'
-      }
-    ];
-  }else
-  {
-    settings = [
-      {
-        'name':'Login',
-        'link':'/api/auth/login'
-      }
-    ];
-  }
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -71,9 +36,6 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -114,6 +76,25 @@ const ResponsiveAppBar = () => {
               ))}
             </Menu>
           </Box>
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            LOGO
+          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
@@ -129,7 +110,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {user?<Avatar alt="Remy Sharp" src={user.picture} /> : <AccountCircle/>}
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -150,12 +131,11 @@ const ResponsiveAppBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center"><a href={setting.link}>{setting.name}</a></Typography>
+                  <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
-          </Box> 
-
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
